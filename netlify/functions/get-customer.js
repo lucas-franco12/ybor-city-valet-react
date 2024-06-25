@@ -6,8 +6,8 @@ const client = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true,
 exports.handler = async function(event, context) {
   try {
     await client.connect();
-    const database = client.db('valet');
-    const collection = database.collection('customers');
+    const database = client.db('valet');  
+    const collection = database.collection('customers');  
     const customers = await collection.find({}).toArray();
 
     return {
