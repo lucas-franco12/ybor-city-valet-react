@@ -18,7 +18,7 @@ export default function Checkin() {
 
   async function newCustomer() {
     if (!validateCustomer(customer)) return;
-    
+
     try {
       const response = await fetch('/api/add-customer', {
         method: 'POST',
@@ -29,7 +29,7 @@ export default function Checkin() {
       });
 
       const data = await response.json();
-      console.log(data);
+      console.log("Response from customer:",data);
 
       setCustomer({
         lastName: '',

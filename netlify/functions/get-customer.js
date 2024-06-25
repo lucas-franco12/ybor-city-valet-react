@@ -1,13 +1,9 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-const client = new MongoClient(process.env.MONGODB_URI);
+const client = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 exports.handler = async function(event, context) {
-  if (event.httpMethod !== 'GET') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
-
   try {
     await client.connect();
     const database = client.db('valet');
